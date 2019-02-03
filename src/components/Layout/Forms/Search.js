@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Button, Col, Form, FormGroup, Input, Label, Row, Spinner, UncontrolledAlert } from 'reactstrap';
+import { Button, Col, Form, FormGroup, Input, Label, Row, Spinner } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 import messages from "../../../containers/App/messages";
 import API from "../../../components/Util/Api";
