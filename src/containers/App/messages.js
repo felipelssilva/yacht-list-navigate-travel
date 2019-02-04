@@ -8,6 +8,10 @@ export default defineMessages({
         header: {
             id: 'app.containers.app.content.header',
             defaultMessage: 'Yachts List - Navigate Travel'
+        },
+        backToSearch: {
+            id: 'app.containers.app.content.back.to.search',
+            defaultMessage: 'Back to search'
         }
     },
     form: {
