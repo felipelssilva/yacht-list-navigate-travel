@@ -1,65 +1,64 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Col, Row, Table, Badge } from 'reactstrap';
+import Alerts from "../Layout/Alerts";
+import { FormattedMessage } from 'react-intl';
+import messages from "./messages";
+import './productTable.css';
 
-function ProductTable(props) {
-    return (
-        <Fragment>
-            {props.products.data &&
-                <Row>
-                    <Col xs={12}>
-                        <Row>
-                            <Col className="mt-3">
-                                <h1>Our Prices</h1>
-                            </Col>
-                        </Row>
+class ProductTable extends Component {
+    render() {
 
-                        {/*{props.products.data.map(p => (*/}
-                            {/*<div key={p.date}>{p.date}</div>*/}
-                        {/*))}*/}
+        const { products } = this.props;
 
-                        <Table>
-                            <thead>
-                            <tr>
-                                {props.products.data.map(p => (
-                                    <th key={p.date}>
-                                        <p>{p.dateText}</p>
-                                        <p>({p.dateday})</p>
-                                        <Badge color="danger" pill>{p.temperature}</Badge>
+        return (
+            <Fragment>
+                {products.data.length > 0 ? (
+                    <Row>
+                        <Col xs={12}>
+                            <Table responsive hover>
+                                <thead>
+                                <tr>
+                                    <th className="ours-prices">
+                                        <h2><FormattedMessage {...messages.table.oursPrices} /></h2>
                                     </th>
-                                ))}
-                            </tr>
-                            </thead>
-                            <tbody>
-                                {/*{props.products.data.map((p) => (*/}
-                                    {/*<tr>*/}
-                                        {/*{p.products.map((c, i) => (*/}
-                                            {/*<td key={i}>*/}
-                                                {/*{c.productClass}*/}
-                                            {/*</td>*/}
-                                        {/*))}*/}
-                                    {/*</tr>*/}
-                                {/*))}*/}
-
-                                {props.products.data.map((c, i) => (
-                                    <Fragment>
-                                        {props.products.data[i].products.map((p) => (
-                                            <tr>
-                                                <td key={i}>
-                                                    <p>{p.productClass}</p>
-                                                    <p>{p.status}</p>
-                                                </td>
-                                            </tr>
+                                    {products.data.map(p => (
+                                        <th key={p.date}>
+                                            <p>{p.dateText}</p>
+                                            <p>({p.dateday})</p>
+                                            <Badge color="danger" pill>{p.temperature}</Badge>
+                                        </th>
+                                    ))}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {products.data[0].products.map((prod, x) => (
+                                    <tr key={x}>
+                                        <th scope="row">
+                                            <p>{prod.productClass}</p>
+                                        </th>
+                                        {products.data[x].products.map((p, y) => (
+                                            <Fragment key={y}>
+                                                {p.prices.map((price, z) => (
+                                                    <td key={z} className={p.statusCode === '3' ? "sold-out" : "" }>
+                                                        <p className="rrp">{price.currencySymbol}{price.rrp}</p>
+                                                        <p className="rrpw">{price.currencySymbol}{price.rrpWithDiscount}</p>
+                                                        <p>{p.status}</p>
+                                                    </td>
+                                                ))}
+                                            </Fragment>
                                         ))}
-                                    </Fragment>
+                                    </tr>
                                 ))}
-
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
-            }
-        </Fragment>
-    );
+                                </tbody>
+                            </Table>
+                        </Col>
+                    </Row>
+                ) : (
+                    <Alerts message={<FormattedMessage {...messages.notFound} />} type='danger'/>
+                )}
+            </Fragment>
+        );
+    }
 }
 
 export default ProductTable;
