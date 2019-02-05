@@ -1,0 +1,38 @@
+
+.table thead th {
+    text-align: center;
+    min-width: 115px;
+}
+
+.table td, .table th {
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.table thead th.ours-prices {
+    vertical-align: middle;
+}
+
+.table thead th p {
+    font-weight: 100;
+    margin-bottom: 5px;
+}
+
+.table .rrp {
+    text-decoration: line-through;
+    margin: 0;
+}
+
+.table .rrpw {
+    font-size: 2em;
+    font-weight: 900;
+    color: #dc3b45;
+    margin: 0 0 10px 0;
+    line-height: 1;
+}
+
+.table td.sold-out {
+    opacity: 0.3;
+    cursor: initial;
+}

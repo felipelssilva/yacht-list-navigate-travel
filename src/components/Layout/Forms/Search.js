@@ -83,10 +83,9 @@ class Search extends Component {
             <Fragment>
 
                 {Object.keys(this.state.products).length === 0 ? (
-
                     <Form onSubmit={this.handleSubmit} className="text-center">
                         {this.state.searchError &&
-                        <Alerts message={<FormattedMessage {...messages.form.message.error} />} type='danger'/>
+                          <Alerts message={<FormattedMessage {...messages.form.message.error} />} type='danger'/>
                         }
                         <Row>
                             <Col sm="12" md={{ size: 6, offset: 3 }}>
@@ -102,15 +101,14 @@ class Search extends Component {
                         <Row>
                             <Col sm="12" md={{ size: 6, offset: 3 }}>
                                 <Button block type="submit" size="lg" color="primary">
-
                                     {this.state.isLoading ? (
                                         <span>
-                                                <Spinner color="light"/>
-                                            </span>
+                                            <Spinner color="light"/>
+                                        </span>
                                     ) : (
                                         <span>
-                                                <FormattedMessage {...messages.form.submit} />
-                                            </span>
+                                            <FormattedMessage {...messages.form.submit} />
+                                        </span>
                                     )}
                                 </Button>
                             </Col>
@@ -119,7 +117,8 @@ class Search extends Component {
 
                 ) : (
                     <Fragment>
-                        <Button outline color="primary" onClick={this.handleBackToSearch}>
+                        <Button outline color="primary" onClick={this.handleBackToSearch}
+                              className="mb-3">
                             <FormattedMessage {...messages.content.backToSearch} />
                         </Button>
 
