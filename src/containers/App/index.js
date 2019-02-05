@@ -10,7 +10,7 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <Container className="header-logo container my-5">
+                <Container className="container my-5">
                     <Row>
                         <Col xs="12" className="text-center mb-4 mb-xs-3 mb-sm-3 mb-md-3 mb-lg-0">
                             <h1>
