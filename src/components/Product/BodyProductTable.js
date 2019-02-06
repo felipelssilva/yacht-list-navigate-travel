@@ -15,13 +15,11 @@ class BodyProductTable extends Component {
                             </th>
                             {products.data[x].products.map((p, y) => (
                                 <Fragment key={y}>
-                                    {/*{p.prices.map((price, z) => (*/}
                                     <td className={p.statusCode === '3' ? "sold-out" : ""}>
                                         <p className="rrp">{p.prices[0].currencySymbol}{p.prices[0].rrp}</p>
                                         <p className="rrpw">{p.prices[0].currencySymbol}{p.prices[0].rrpWithDiscount}</p>
                                         <p>{p.status}</p>
                                     </td>
-                                    {/*))}*/}
                                 </Fragment>
                             ))}
                         </tr>
