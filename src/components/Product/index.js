@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { Col, Row, Table, Badge } from 'reactstrap';
+import { Col, Row, Table } from 'reactstrap';
 import Alerts from "../Layout/Alerts";
 import { FormattedMessage } from 'react-intl';
 import messages from "./messages";
+import HeaderProductTable from "./HeaderProductTable";
+import BodyProductTable from "./BodyProductTable";
 import './productTable.css';
 
 class ProductTable extends Component {
@@ -21,34 +23,11 @@ class ProductTable extends Component {
                                     <th className="ours-prices">
                                         <h2><FormattedMessage {...messages.table.oursPrices} /></h2>
                                     </th>
-                                    {products.data.map(p => (
-                                        <th key={p.date}>
-                                            <p>{p.dateText}</p>
-                                            <p>({p.dateday})</p>
-                                            <Badge color="danger" pill>{p.temperature}</Badge>
-                                        </th>
-                                    ))}
+                                    <HeaderProductTable products={products} />
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {products.data[0].products.map((prod, x) => (
-                                    <tr key={x}>
-                                        <th scope="row">
-                                            <p>{prod.productClass}</p>
-                                        </th>
-                                        {products.data[x].products.map((p, y) => (
-                                            <Fragment key={y}>
-                                                {p.prices.map((price, z) => (
-                                                    <td key={z} className={p.statusCode === '3' ? "sold-out" : "" }>
-                                                        <p className="rrp">{price.currencySymbol}{price.rrp}</p>
-                                                        <p className="rrpw">{price.currencySymbol}{price.rrpWithDiscount}</p>
-                                                        <p>{p.status}</p>
-                                                    </td>
-                                                ))}
-                                            </Fragment>
-                                        ))}
-                                    </tr>
-                                ))}
+                                    <BodyProductTable products={products} />
                                 </tbody>
                             </Table>
                         </Col>
