@@ -12,6 +12,7 @@
 
 .table thead th.ours-prices {
     vertical-align: middle;
+    text-align: right;
 }
 
 .table thead th p {
